@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aygarist - Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="gradient-bg"></div>
+    <div class="container">
+        <header>
+            <h1 class="title">Gallery</h1>
+            <div id="owner-actions-gallery">
+                <button id="logoutBtnGallery" style="display:none;">Logout</button>
+            </div>
+        </header>
+        <main>
+            <div class="arrow-nav">
+                <a href="index.html" title="Go to Home" class="arrow-btn">&#8592;</a>
+            </div>
+            <section>
+                <h2>Sketches</h2>
+                <div id="sketches-list" class="file-list"></div>
+            </section>
+            <section>
+                <h2>Blogs</h2>
+                <div id="blogs-list" class="file-list"></div>
+            </section>
+            <div id="gallery-loader" class="loader"></div>
+        </main>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

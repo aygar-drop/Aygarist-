@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aygarist - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Use a playful Google Font similar to Kristen ITC -->
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="gradient-bg"></div>
+    <div class="container">
+        <header>
+            <h1 class="title">Welcome to Aygarist</h1>
+            <div id="owner-actions">
+                <button id="logoutBtn" style="display:none;">Logout</button>
+            </div>
+        </header>
+
+        <main>
+            <section id="login-section">
+                <h2>Owner Login</h2>
+                <form id="loginForm">
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+                <p id="login-error" class="error"></p>
+            </section>
+
+            <section id="upload-section" style="display:none;">
+                <h2>Upload Sketch or Blog</h2>
+                <form id="uploadForm">
+                    <input type="text" id="fileTitle" placeholder="Title" required>
+                    <textarea id="fileDescription" placeholder="Description" required></textarea>
+                    <input type="file" id="fileInput" required>
+                    <button type="submit">Upload</button>
+                </form>
+                <p id="upload-error" class="error"></p>
+                <p id="upload-success" class="success"></p>
+            </section>
+
+            <div class="arrow-nav">
+                <a href="gallery.html" title="Go to Gallery" class="arrow-btn">&#8594;</a>
+            </div>
+        </main>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
