@@ -1,12 +1,19 @@
+/* Global Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body, html {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    font-family: 'Arial Rounded MT Bold', 'Comic Neue', Arial, sans-serif;
-    position: relative;
+    font-family: 'Comic Neue', Arial, sans-serif;
+    background: #f5f7fa;
+    color: #222;
     overflow-x: hidden;
 }
 
+/* Gradient Background */
 .gradient-bg {
     background: linear-gradient(135deg, #4f8cff 0%, #a259ff 100%);
     position: fixed;
@@ -14,17 +21,19 @@ body, html {
     z-index: -1;
 }
 
+/* Container */
 .container {
     max-width: 700px;
     margin: 40px auto;
-    background: rgba(255,255,255,0.96);
+    background: rgba(255,255,255,0.98);
     border-radius: 18px;
     box-shadow: 0 6px 32px 0 #4052a16c;
     padding: 32px 28px 16px 28px;
 }
 
+/* Header */
 header .title {
-    font-family: 'Comic Neue', cursive, 'Comic Sans MS', Arial, sans-serif;
+    font-family: 'Comic Neue', cursive, Arial, sans-serif;
     font-size: 2.6rem;
     margin-top: 0;
     color: #5540ff;
@@ -32,24 +41,42 @@ header .title {
     text-align: center;
 }
 
+/* Headings */
 h2 {
     color: #653fff;
     font-family: inherit;
     margin-bottom: 0.8em;
 }
 
+/* Forms */
 form {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
+.form-group {
+    margin-bottom: 1em;
+}
+
+/* Inputs and Textareas */
 input[type="text"], input[type="email"], input[type="password"], textarea {
     padding: 0.65em;
     border-radius: 8px;
     border: 1px solid #aeaeae;
     font-size: 1em;
     background: #f8fafd;
+    transition: border-color 0.2s;
+}
+
+input[type="file"] {
+    padding: 4px 0;
+}
+
+input:focus, textarea:focus, button:focus, a:focus {
+    outline: 2px solid #a259ff;
+    outline-offset: 2px;
+    border-color: #a259ff;
 }
 
 textarea {
@@ -57,11 +84,8 @@ textarea {
     resize: vertical;
 }
 
-input[type="file"] {
-    padding: 4px 0;
-}
-
-button {
+/* Buttons */
+.btn, button {
     background: linear-gradient(90deg, #4f8cff 0%, #a259ff 100%);
     color: white;
     border: none;
@@ -71,12 +95,43 @@ button {
     cursor: pointer;
     font-weight: bold;
     letter-spacing: 0.04em;
-    transition: background 0.2s;
-}
-button:hover {
-    background: linear-gradient(90deg, #715bff 0%, #a259ff 100%);
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(160,89,255,0.08);
+    margin-top: 8px;
 }
 
+.btn:hover, button:hover {
+    background: linear-gradient(90deg, #715bff 0%, #a259ff 100%);
+    box-shadow: 0 4px 12px rgba(160,89,255,0.14);
+}
+
+.btn-logout {
+    background: #f44336;
+}
+.btn-logout:hover {
+    background: #c62828;
+}
+
+/* Error & Success Messages */
+.error {
+    color: #d32f2f;
+    background: #fdecea;
+    padding: 0.5em;
+    border-radius: 5px;
+    margin: 0.3em 0;
+    font-size: 1em;
+}
+
+.success {
+    color: #388e3c;
+    background: #e8f5e9;
+    padding: 0.5em;
+    border-radius: 5px;
+    margin: 0.3em 0;
+    font-size: 1em;
+}
+
+/* Navigation Arrow */
 .arrow-nav {
     text-align: right;
     margin-top: 28px;
@@ -91,12 +146,34 @@ button:hover {
     margin-left: 6px;
     border: 2px solid #c2cffc;
     transition: background 0.15s, color 0.15s;
+    display: inline-block;
+    line-height: 1;
 }
-.arrow-btn:hover {
+.arrow-btn:hover, .arrow-btn:focus {
     background: #a259ff;
     color: #fff;
 }
 
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .container {
+        max-width: 98vw;
+        margin: 10px;
+        padding: 18px 6px 8px 6px;
+        border-radius: 8px;
+    }
+    header .title {
+        font-size: 1.7rem;
+    }
+    .arrow-btn {
+        font-size: 1.3em;
+    }
+    form {
+        gap: 8px;
+    }
+}
+
+/* Optional: Style for file cards if used elsewhere */
 .file-list {
     min-height: 80px;
     margin-bottom: 18px;
@@ -104,93 +181,9 @@ button:hover {
     flex-direction: column;
     gap: 18px;
 }
-
 .file-card {
     background: #f2f6ff;
     border: 1px solid #e0e5f7;
     border-radius: 10px;
     padding: 14px 18px 12px 18px;
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    gap: 18px;
-    justify-content: flex-start;
-    box-shadow: 0 2px 12px 0 #b6bcff3c;
-}
-
-.file-image {
-    max-width: 110px;
-    max-height: 90px;
-    border-radius: 7px;
-    border: 1px solid #d7e3ff;
-    object-fit: cover;
-    margin-right: 16px;
-}
-
-.file-info {
-    flex: 1;
-}
-
-.file-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-left: 10px;
-}
-
-.file-actions button {
-    background: #ff4f4f;
-    color: #fff;
-    border-radius: 6px;
-    font-size: 0.93em;
-    padding: 0.35em 0.7em;
-    border: none;
-    cursor: pointer;
-    margin-bottom: 1px;
-    transition: background 0.22s;
-}
-.file-actions button.edit-btn {
-    background: #4faaff;
-}
-.file-actions button:hover {
-    background: #c92c2c;
-}
-.file-actions button.edit-btn:hover {
-    background: #143fff;
-}
-.upload-date {
-    color: #9ea4b8;
-    font-size: 0.97em;
-    margin-top: 5px;
-}
-
-.error {
-    color: #ec2a2a;
-    font-size: 1em;
-    margin: 0.5em 0 0.2em 0;
-}
-.success {
-    color: #2bbd57;
-    font-size: 1em;
-    margin: 0.5em 0 0.2em 0;
-}
-
-.loader {
-    height: 40px;
-    text-align: center;
-    margin: 28px 0;
-    display: none;
-}
-.loader::after {
-    content: '';
-    display: inline-block;
-    width: 2em;
-    height: 2em;
-    border: 4px solid #a259ff;
-    border-radius: 50%;
-    border-top: 4px solid transparent;
-    animation: spin 1s linear infinite;
-}
-@keyframes spin {
-    to { transform: rotate(360deg); }
 }
